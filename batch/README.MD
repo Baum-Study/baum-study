@@ -1,5 +1,7 @@
 # Spring Batch Study
 
+저희는 Spring Batch 5 version을 기준으로 스터디를 진행합니다.
+
 ## 스터디 방식
 
 블로그 첫번째 챕터 : https://devocean.sk.com/experts/techBoardDetail.do?ID=166164
