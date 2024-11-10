@@ -22,7 +22,6 @@
 4. **BATCH_JOB_EXECUTION_CONTEXT**
 5. **BATCH_STEP_EXECUTION**
 6. **BATCH_STEP_EXECUTION_CONTEXT**
-7. **BATCH_JOB_EXECUTION_SEQUENCE**
 
 ---
 
@@ -109,14 +108,6 @@ Step 실행의 **컨텍스트 정보**를 저장한다.
 | `SERIALIZED_CONTEXT` | 직렬화된 컨텍스트 데이터   |
 
 ---
-
-### 7. BATCH_JOB_EXECUTION_SEQUENCE
-
-**시퀀스 테이블**로, Job과 Step 실행 ID를 생성하는 데 사용된다.
-
-| 컬럼명  | 설명    |
-|------|-------|
-| `ID` | 시퀀스 값 |
 
 <br/>
 
