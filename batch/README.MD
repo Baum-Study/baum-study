@@ -29,3 +29,4 @@
 ## 실습 프로젝트 URL
 
 철희 : `https://github.com/Baum-Study/cherhy-batch`
+재영 : `https://github.com/Baum-Study/jaeyoung-batch`
