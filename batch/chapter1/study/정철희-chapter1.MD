@@ -42,7 +42,7 @@ spring:
 #### 스키마 구조
 
 스키마 구조는 다음과 같습니다.
-![img.png](img.png)
+![img.png](../image/정철희1.png)
 
 **BATCH_JOB_INSTANCE :**
 
