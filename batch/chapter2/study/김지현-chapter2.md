@@ -27,7 +27,7 @@ Job의 이름, 사용될 Step 등을 정할 수 있다. <br>
 `Tasklet model`: 로직 자체가 단순한 경우에 사용, 다양한 데이터소스나 파일을 한번에 처리해야 하는 경우 유연함이 있다. <br>
 `Chunk model`: 데이터량이 큰 경우에 사용, `Reader/Processor/Writer` 플로우 방식으로 처리됨. <br>
 
-![img.png](../image/김지현-img1.png)
+![img.png](../image/정철희-img1.png)
 <br>
 
 `Job`: 스프링 배치의 단일 실행 단위, `Step`으로 구성되어 있다. <br>
@@ -39,7 +39,7 @@ Job의 이름, 사용될 Step 등을 정할 수 있다. <br>
 
 # Spring Batch 흐름
 
-![img_1.png](../image/김지현-img2.png)
+![img.png](../image/정철희-img1.png)
 
 ### 배치 처리 순서
 1. `JobScheduler`가 `JobLauncher`를 실행시킨다.
