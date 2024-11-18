@@ -14,6 +14,8 @@
 - 데이터를 청크 단위(Chunk Size)로 읽고, 처리한 후 일괄 저장할 수 있다.
 - 예를 들어, 1000만 건의 데이터를 1000건씩 읽고 처리하여 저장할 수 있다.
 
+<br/>
+
 ## Spring Batch 기본 아키텍처
 
 ![img.png](../image/방재영1.png)
@@ -30,6 +32,8 @@ Spring Batch는 다음과 같은 주요 컴포넌트로 구성된다.
 | **ItemWriter**    | 읽어들였거나 처리된 데이터에 대해 쓰기 작업을 담당하며, 데이터베이스 저장, 파일 출력 등을 할 수 있다.                                            |
 | **JobRepository** | Job과 Step의 상태 정보를 관리하는 시스템으로, 데이터베이스에 저장하여 재실행을 지원한다.                                                  |
 
+<br/>
+
 ## Spring Batch의 처리 흐름
 
 ![img.png](../image/방재영2.png)
@@ -43,6 +47,8 @@ Spring Batch는 다음과 같은 주요 컴포넌트로 구성된다.
     - **ItemProcessor**가 데이터를 처리한다.
     - **ItemWriter**가 데이터를 저장한다.
 6. Job의 실행 결과는 **JobRepository**를 통해 저장, 관리된다.
+
+<br/>
 
 ## Spring Batch의 저장 정보
 
