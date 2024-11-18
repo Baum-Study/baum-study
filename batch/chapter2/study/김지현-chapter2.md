@@ -39,7 +39,7 @@ Job의 이름, 사용될 Step 등을 정할 수 있다. <br>
 
 # Spring Batch 흐름
 
-![img.png](../image/정철희-img1.png)
+![img.png](../image/정철희-img2.png)
 
 ### 배치 처리 순서
 1. `JobScheduler`가 `JobLauncher`를 실행시킨다.
