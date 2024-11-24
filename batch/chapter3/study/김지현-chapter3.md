@@ -6,6 +6,8 @@
 청크에 포함될 데이터의 size는 본 클래스의 `commit-interval`이라는 설정값을 이용해 조정한다. <br>
 `ItemReader`, `ItemProcesser`, `ItemWriter`는 청크 단위를 처리하기 위한 인터페이스이다. <br>
 
+![img.png](../image/김지현_img1.png)
+
 `ChunkOrientedTasklet`은 `ItemReader`, `ItemProcesser`, `ItemWriter` 구현체를 각각 호출한다. <br>
 이때 `ChunkOrientedTasklet`은 청크 단위에 따라 `ItemReader`, `ItemProcesser`, `ItemWriter`를 반복 실행한다. <br>
 청크 크기만큼 `ItemReader`가 데이터를 읽어들인다. <br>
