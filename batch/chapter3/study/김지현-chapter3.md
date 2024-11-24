@@ -6,11 +6,11 @@
 청크에 포함될 데이터의 size는 본 클래스의 `commit-interval`이라는 설정값을 이용해 조정한다. <br>
 `ItemReader`, `ItemProcesser`, `ItemWriter`는 청크 단위를 처리하기 위한 인터페이스이다. <br>
 
-`ChunkOrientedTasklet`은 `ItemReader`, `ItemProcesser`, 'ItemWriter` 구현체를 각각 호출한다.
-이때 `ChunkOrientedTasklet`은 청크 단위에 따라 `ItemReader`, `ItemProcesser`, `ItemWriter`를 반복 실행한다.
-청크 크기만큼 `ItemReader`가 데이터를 읽어들인다.
-청크 단위를 `ItemProcessor`로 전달하고, 데이터를 처리한다.
-`ItemWriter`로 전달되어 데이터를 저장하거나, 처리를 수행한다.
+`ChunkOrientedTasklet`은 `ItemReader`, `ItemProcesser`, `ItemWriter` 구현체를 각각 호출한다. <br>
+이때 `ChunkOrientedTasklet`은 청크 단위에 따라 `ItemReader`, `ItemProcesser`, `ItemWriter`를 반복 실행한다. <br>
+청크 크기만큼 `ItemReader`가 데이터를 읽어들인다. <br>
+청크 단위를 `ItemProcessor`로 전달하고, 데이터를 처리한다. <br>
+`ItemWriter`로 전달되어 데이터를 저장하거나, 처리를 수행한다. <br>
 
 ### ItemProcessor
 `ItemProcessor`는 구체적인 구현체를 구현하여 스프링 배치에 전달한다. <br>
