@@ -2,10 +2,10 @@
 
 ## Chunk Model
 
-- 데이터를 **일정한 단위(청크)**로 나누어 처리하는 방식입니다.
-- `ChunkOrientedTasklet`은 청크 처리를 지원하는 Tasklet의 **구체적인 클래스** 역할을 합니다.
-- 청크에 포함되는 데이터의 최대 레코드 수(청크 크기)는 **`commit-interval`**이라는 설정값을 통해 조정할 수 있습니다.
-- **`ItemReader`**, **`ItemProcessor`**, **`ItemWriter`**는 청크 단위로 데이터를 처리하기 위한 주요 인터페이스입니다.
+- 데이터를 **`일정한 단위(청크)`** 로 나누어 처리하는 방식입니다.
+- `ChunkOrientedTasklet`은 청크 처리를 지원하는 Tasklet의 **`구체적인 클래스`** 역할을 합니다.
+- 청크에 포함되는 데이터의 최대 레코드 수(청크 크기)는 **`commit-interval`** 이라는 설정값을 통해 조정할 수 있습니다.
+- **`ItemReader`**, **`ItemProcessor`**, **`ItemWriter`** 는 청크 단위로 데이터를 처리하기 위한 주요 인터페이스입니다.
 
 ### commit-interval
 
@@ -65,27 +65,27 @@ public class MyItemProcessor implements
 ### 제공되는 주요 구현체
 
 - **FlatFileItemReader**
-    
-    플랫 파일(CSV 등)을 읽어 객체로 매핑합니다. 구분자를 기준으로 데이터를 매핑하거나 `Resource` 객체를 사용해 커스텀 매핑도 가능합니다.
-    
+
+  플랫 파일(CSV 등)을 읽어 객체로 매핑합니다. 구분자를 기준으로 데이터를 매핑하거나 `Resource` 객체를 사용해 커스텀 매핑도 가능합니다.
+
 - **StaxEventItemReader**
-    
-    XML 파일을 읽어들입니다. StAX 기반으로 작동하며, XML 데이터를 처리하는 데 적합합니다.
-    
+
+  XML 파일을 읽어들입니다. StAX 기반으로 작동하며, XML 데이터를 처리하는 데 적합합니다.
+
 - **JdbcPagingItemReader / JdbcCursorItemReader**
-    
-    JDBC를 사용해 SQL 쿼리를 실행하고 데이터베이스 레코드를 읽습니다.
-    
+
+  JDBC를 사용해 SQL 쿼리를 실행하고 데이터베이스 레코드를 읽습니다.
+
     - `JdbcPagingItemReader`: 데이터를 페이지 단위로 처리하며 `JdbcTemplate`을 사용합니다.
     - `JdbcCursorItemReader`: 하나의 SQL로 커서를 사용해 데이터를 처리합니다.
 - **MyBatisCursorItemReader / MyBatisPagingItemReader**
-    
-    MyBatis를 활용해 데이터베이스의 데이터를 읽습니다. `JdbcXXXItemReader`와 동일한 방식으로 작동하나 구현체만 MyBatis를 사용합니다.
-    
+
+  MyBatis를 활용해 데이터베이스의 데이터를 읽습니다. `JdbcXXXItemReader`와 동일한 방식으로 작동하나 구현체만 MyBatis를 사용합니다.
+
 - **JmsItemReader / AmqpItemReader**
-    
-    JMS 또는 AMQP에서 메시지를 읽어옵니다.
-    
+
+  JMS 또는 AMQP에서 메시지를 읽어옵니다.
+
 
 ---
 
@@ -96,17 +96,17 @@ Spring Batch는 `ItemProcessor`를 위한 다양한 구현체를 제공합니다
 ### 제공되는 주요 구현체
 
 - **PassThroughItemProcessor**
-    
-    입력 데이터를 그대로 반환하며, 추가 처리 없이 데이터를 전달할 때 사용됩니다.
-    
+
+  입력 데이터를 그대로 반환하며, 추가 처리 없이 데이터를 전달할 때 사용됩니다.
+
 - **ValidatingItemProcessor**
-    
-    데이터를 검증합니다. 검증 규칙을 구현하려면 `Validator` 인터페이스를 구현하거나, `SpringValidatorAdapter`를 활용할 수 있습니다.
-    
+
+  데이터를 검증합니다. 검증 규칙을 구현하려면 `Validator` 인터페이스를 구현하거나, `SpringValidatorAdapter`를 활용할 수 있습니다.
+
 - **CompositeItemProcessor**
-    
-    여러 `ItemProcessor`를 순차적으로 실행합니다. 예를 들어, `ValidatingItemProcessor`로 데이터 검증 후 비즈니스 로직을 처리하는 방식으로 사용할 수 있습니다.
-    
+
+  여러 `ItemProcessor`를 순차적으로 실행합니다. 예를 들어, `ValidatingItemProcessor`로 데이터 검증 후 비즈니스 로직을 처리하는 방식으로 사용할 수 있습니다.
+
 
 ---
 
@@ -117,25 +117,25 @@ Spring Batch는 `ItemProcessor`를 위한 다양한 구현체를 제공합니다
 ### 제공되는 주요 구현체
 
 - **FlatFileItemWriter**
-    
-    처리된 객체를 CSV 파일과 같은 플랫 파일로 작성합니다. 매핑 규칙은 구분자를 기준으로 커스터마이징할 수 있습니다.
-    
+
+  처리된 객체를 CSV 파일과 같은 플랫 파일로 작성합니다. 매핑 규칙은 구분자를 기준으로 커스터마이징할 수 있습니다.
+
 - **StaxEventItemWriter**
-    
-    XML 파일로 데이터를 작성합니다.
-    
+
+  XML 파일로 데이터를 작성합니다.
+
 - **JdbcBatchItemWriter**
-    
-    JDBC를 통해 SQL을 실행하고 객체를 데이터베이스에 저장합니다. 내부적으로 `JdbcTemplate`을 사용합니다.
-    
+
+  JDBC를 통해 SQL을 실행하고 객체를 데이터베이스에 저장합니다. 내부적으로 `JdbcTemplate`을 사용합니다.
+
 - **MyBatisBatchItemWriter**
-    
-    MyBatis를 사용해 데이터베이스에 객체를 저장합니다.
-    
+
+  MyBatis를 사용해 데이터베이스에 객체를 저장합니다.
+
 - **JmsItemWriter / AmqpItemWriter**
-    
-    메시지를 JMS 또는 AMQP로 전송합니다.
-    
+
+  메시지를 JMS 또는 AMQP로 전송합니다.
+
 
 ---
 
@@ -148,11 +148,11 @@ Spring Batch는 `ItemProcessor`를 위한 다양한 구현체를 제공합니다
 ### Tasklet 구현체
 
 - **SystemCommandTasklet**
-    
-    시스템 명령어를 비동기적으로 실행하며, 타임아웃 설정 및 실행 취소가 가능합니다.
-    
+
+  시스템 명령어를 비동기적으로 실행하며, 타임아웃 설정 및 실행 취소가 가능합니다.
+
 - **MethodInvokingTaskletAdapter**
-    
-    특정 POJO 클래스의 메서드를 호출할 수 있도록 합니다.
-    
-    메서드의 반환값은 처리 종료 상태(`ExitStatus`)로 설정할 수 있습니다. 반환값이 없을 경우 기본적으로 `COMPLETED` 상태로 간주됩니다.
+
+  특정 POJO 클래스의 메서드를 호출할 수 있도록 합니다.
+
+  메서드의 반환값은 처리 종료 상태(`ExitStatus`)로 설정할 수 있습니다. 반환값이 없을 경우 기본적으로 `COMPLETED` 상태로 간주됩니다.
