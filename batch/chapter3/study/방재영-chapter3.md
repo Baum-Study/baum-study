@@ -17,6 +17,8 @@
 3. 읽어들인 데이터를 `ItemProcessor`에 전달하여 처리한다.
 4. 처리된 데이터를 `ItemWriter`에 전달하여 저장하거나 파일로 출력한다.
 
+<br/>
+
 ---
 
 ## 2. ItemReader
@@ -37,6 +39,8 @@
     - Paging과 Cursor의 차이점은 MyBatis를 구현 방법이 다를 뿐, JdbcXXXItemReader과 동일하다.
 - **JmsItemReader / AmqpItemReader**: JMS 또는 AMQP 메시지를 읽는다.
 
+<br/>
+
 ---
 
 ## 3. ItemProcessor
@@ -53,6 +57,8 @@
     - 여러 `ItemProcessor`를 순차적으로 실행한다.
     - ValidatingItemProcessor를 사용하여 입력 확인을 수행한 후, 비즈니스 로직을 실행하려는 경우 활성화된다.
 
+<br/>
+
 ---
 
 ## 4. ItemWriter
@@ -68,6 +74,8 @@ ItemWriter는 데이터를 저장하거나 출력하는 역할을 담당한다.
 - **JdbcBatchItemWriter**: JDBC를 사용해 데이터를 DB에 저장한다.
 - **MyBatisBatchItemWriter**: MyBatis를 사용해 데이터를 DB에 저장한다.
 - **JmsItemWriter / AmqpItemWriter**: JMS 또는 AMQP로 메시지 전송한다.
+
+<br/>
 
 ---
 
