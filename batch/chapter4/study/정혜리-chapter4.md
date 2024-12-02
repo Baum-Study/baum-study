@@ -130,6 +130,7 @@ Tom   1	  M
 
 ## LineAggregator 구현
 LineAggregator는 FlatFile에 저장할 아이템을 String으로 변환하는 방법을 지정한다.
+
 LineAggregator 구현 시 aggregate()를 반드시 정의해야 하는데, 해당 함수는 제네릭으로 지정한 타입의 인자를 받아 String을 반환하는 것을 알 수 있다.
 
 ### LineAggregator interface
@@ -174,8 +175,9 @@ Tom:1
 ```
 
 ## FlatFileHeaderCallback 구현
-FlatFileHeaderCallback는 출력될 파일에 헤더를 달아주는 역할을 한다.
-write() 를 구현해야 한다. 헤더에 필드명을 추가해보자.
+FlatFileHeaderCallback는 출력될 파일에 헤더를 달아주는 역할을 하며, write 함수를 반드시 구현해야 한다.
+
+아래는 필드명 추가 예시이다.
 
 - CustomHeader 작성
 ```kotlin
@@ -277,7 +279,9 @@ Tom:1
 -------
 
 ### 복잡한 구조 예시 - PatternMatchingCompositeLineMapper
-한 파일에 여러 유형의 레코드가 있는 경우
+한 파일에 여러 유형의 레코드가 있는 경우의 예시
+
+참고: https://docs.spring.io/spring-batch/reference/readers-and-writers/flat-files/file-item-reader.html
 
 ```java
 @Bean
