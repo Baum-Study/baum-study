@@ -45,11 +45,6 @@
 ```Kotlin
 testImplementation("org.jeasy:easy-random-core:5.0.0")
 
-import org.jeasy.random.EasyRandomParameters
-import org.jeasy.random.api.Randomizer
-import java.util.stream.LongStream
-import kotlin.reflect.KProperty
-
 internal fun <T, R> EasyRandomParameters.randomize(
     property: KProperty<T>,
     randomizer: Randomizer<R>,
@@ -61,13 +56,14 @@ internal fun <T, R> EasyRandomParameters.randomize(
 
 internal fun <T> Number.mapParallel(
     block: () -> T,
-): List<T> =
+) =
     LongStream.range(0, this.toLong())
         .parallel()
         .mapToObj {
             block()
         }
         .toList()
+
 
 data class Payment(
     val id: Long,
@@ -79,38 +75,21 @@ data class Payment(
 )
 
 internal object PaymentFactory {
-    fun generate(
-        id: Long = 0,
-        sellerId: Long,
-        productId: Long,
-        productName: String,
-        price: BigDecimal,
-        paymentDate: LocalDateTime,
-    ) =
-        Payment(
-            id = id,
-            sellerId = sellerId,
-            productId = productId,
-            productName = productName,
-            price = price,
-            paymentDate = paymentDate,
-        )
-
     fun generateRandom(): Payment {
         val parameter = EasyRandomParameters()
             .excludeField {
                 it.name == Payment::id.name
             }
             .randomize(Payment::sellerId) {
-                Random.nextLong(1, 100)
+                (1..100).random()
             }
             .randomize(Payment::productId) {
-                Random.nextLong(1, 100)
+                (1..100).random()
             }
             .randomize(Payment::productName) {
                 StringRandomizer(1, 10, Random.nextLong(1, 100)).randomValue
             }
-            .randomize(Example::price) {
+            .randomize(Payment::price) {
                 (100..1_000_000).random().toBigDecimal()
             }
             .randomize(Payment::paymentDate) {
@@ -123,7 +102,11 @@ internal object PaymentFactory {
                     Random.nextInt(0, 60),
                 )
             }
-        return EasyRandom(parameter).nextObject(Example::class.java)
+        return EasyRandom(parameter).nextObject(Payment::class.java)
     }
+}
+
+fun main() {
+    val payments = 1_000_000L.mapParallel(PaymentFactory::generateRandom)
 }
 ```
