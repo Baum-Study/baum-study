@@ -30,3 +30,100 @@
 
 철희 : `https://github.com/Baum-Study/cherhy-batch`
 재영 : `https://github.com/Baum-Study/jaeyoung-batch`
+
+## 12월 10일 5주차 과제
+```markdown
+더미 데이터 생성 로직은 @정철희 주임이 올립니다.
+
+판매자 별로 일 정산, 월 정산 만들기. 테스트 코드에서 실행 할 수 있도록 합니다.
+간단한 결제 데이터 csv 파일로 만들기. -> pk, 판매자 아이디, 상품 아이디, 상품 명, 금액, 결제 일자
+파일을 읽어서 DB에 일 정산, 월 정산 저장하기
+배치 실행된거 스크린샷 해서 올리기
+```
+
+## 12월 10일 5주차 과제 더미 데이터 생성 로직
+```Kotlin
+testImplementation("org.jeasy:easy-random-core:5.0.0")
+
+import org.jeasy.random.EasyRandomParameters
+import org.jeasy.random.api.Randomizer
+import java.util.stream.LongStream
+import kotlin.reflect.KProperty
+
+internal fun <T, R> EasyRandomParameters.randomize(
+    property: KProperty<T>,
+    randomizer: Randomizer<R>,
+) =
+    randomize(
+        { it.name == property.name },
+        randomizer,
+    )
+
+internal fun <T> Number.mapParallel(
+    block: () -> T,
+): List<T> =
+    LongStream.range(0, this.toLong())
+        .parallel()
+        .mapToObj {
+            block()
+        }
+        .toList()
+
+data class Payment(
+    val id: Long,
+    val sellerId: Long,
+    val productId: Long,
+    val productName: String,
+    val price: BigDecimal,
+    val paymentDate: LocalDateTime,
+)
+
+internal object PaymentFactory {
+    fun generate(
+        id: Long = 0,
+        sellerId: Long,
+        productId: Long,
+        productName: String,
+        price: BigDecimal,
+        paymentDate: LocalDateTime,
+    ) =
+        Payment(
+            id = id,
+            sellerId = sellerId,
+            productId = productId,
+            productName = productName,
+            price = price,
+            paymentDate = paymentDate,
+        )
+
+    fun generateRandom(): Payment {
+        val parameter = EasyRandomParameters()
+            .excludeField {
+                it.name == Payment::id.name
+            }
+            .randomize(Payment::sellerId) {
+                Random.nextLong(1, 100)
+            }
+            .randomize(Payment::productId) {
+                Random.nextLong(1, 100)
+            }
+            .randomize(Payment::productName) {
+                StringRandomizer(1, 10, Random.nextLong(1, 100)).randomValue
+            }
+            .randomize(Example::price) {
+                (100..1_000_000).random().toBigDecimal()
+            }
+            .randomize(Payment::paymentDate) {
+                LocalDateTime.of(
+                    Random.nextInt(2020, 2022),
+                    Random.nextInt(1, 13),
+                    Random.nextInt(1, 29),
+                    Random.nextInt(0, 24),
+                    Random.nextInt(0, 60),
+                    Random.nextInt(0, 60),
+                )
+            }
+        return EasyRandom(parameter).nextObject(Example::class.java)
+    }
+}
+```
