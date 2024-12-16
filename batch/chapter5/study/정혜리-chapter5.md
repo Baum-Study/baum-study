@@ -184,3 +184,9 @@ Tom, 1, F
 ```
 
 ![img.png](../image/정혜리_chapter5.png)
+
+<br />
+
+## 5주차 과제
+![과제1](../image/정혜리-settlement-daily.png)
+![img.png](../image/정혜리-settlement-monthly.png)
