@@ -110,3 +110,10 @@ fun main() {
     val payments = 1_000_000L.mapParallel(PaymentFactory::generateRandom)
 }
 ```
+
+## 12월 17일 6주차 과제
+```markdown
+JpaPagingItemReader로 DB내용을 읽고, JpaItemWriter로 DB에 쓰기
+
+JpaPagingItemReader로 회원 테이블에서 데이터를 읽어와서, JpaItemWriter로 회원 테이블에 데이터를 삭제하고 CASCADE로 연결된 IMAGE 테이블에 데이터를 삭제한다.
+```
