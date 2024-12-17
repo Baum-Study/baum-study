@@ -113,7 +113,7 @@ fun main() {
 
 ## 12월 17일 6주차 과제
 ```markdown
-JpaPagingItemReader로 DB내용을 읽고, JpaItemWriter로 DB에 쓰기
-
-JpaPagingItemReader로 회원 테이블에서 데이터를 읽어와서, JpaItemWriter로 회원 테이블에 데이터를 삭제하고 CASCADE로 연결된 IMAGE 테이블에 데이터를 삭제한다.
+먼저 데이터베이스에 회원 테이블과 이미지 테이블을 생성하고 회원 10만명, 이미지 100만개를 생성한다.  
+회원은 이미지를 여러개 가질 수 있고, 회원은 ACTIVE, INACTIVE 두 가지의 상태를 가진다.  
+JpaPagingItemReader와 Cursor로 회원 테이블의 INACTIVE인 회원을 읽어와서, JpaItemWriter로 회원 테이블에 데이터를 삭제하고 CASCADE로 연결된 IMAGE 테이블에 데이터를 삭제한다.  
 ```
