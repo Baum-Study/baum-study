@@ -26,3 +26,9 @@ MyBatisItemWriter는 MyBatis를 이용하여 데이터를 쓰는 ItemWriter이�
 - SqlSessionFactory: SqlSessionTemplate 생성을 위한 팩토리 객체
 - StatementId: 실행할 MyBatis SQL mapper의 상태 ID
 - ItemToParameterConverter: 객체를 ParameterMap으로 변경
+
+이전 챕터 미션에서 회원 10만 명과 이미지 100만개를 생성하고, 회원이 삭제될 때 이미지도 삭제되는 배치를 만들었다.  
+아래 이미지는 결과이다.
+
+![img.png](../image/정철희_img2.png)
+![img.png](../image/정철희_img1.png)
