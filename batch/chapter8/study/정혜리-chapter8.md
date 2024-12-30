@@ -22,6 +22,36 @@ CompositeItemProcessor는 Spring Batch에서 제공하는 ItemProcessor 구현 �
 - 프로세서1: 이름과 성별을 소문자로 변환
 - 프로세서2: 나이에 20 더하기
 
+#### ItemProcessor1, 2
 ```kotlin
+class After20YearsItemProcessor : ItemProcessor<Customer, Customer> {
+    override fun process(item: Customer): Customer? {
+        return item.apply {
+            age += 20
+        }
+    }
+}
 
+class LowerCaseItemProcessor : ItemProcessor<Customer, Customer> {
+    override fun process(item: Customer): Customer {
+        return item.apply {
+            name = name.lowercase()
+            gender = gender.lowercase()
+        }
+    }
+}
 ```
+
+#### compositeProcessor
+```kotlin
+    @Bean
+    fun compositeItemProcessor(): CompositeItemProcessor<Customer, Customer> {
+        return CompositeItemProcessorBuilder<Customer, Customer>()
+            .delegates(listOf(
+                LowerCaseItemProcessor(),
+                After20YearsItemProcessor(),
+            ))
+            .build()
+    }
+```
+
